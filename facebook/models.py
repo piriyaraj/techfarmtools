@@ -16,3 +16,9 @@ class Actress(models.Model):
 
     def get_absolute_url(self):
         return reverse("Actress_detail", kwargs={"pk": self.pk})
+
+class Metadata(models.Model):
+    name=models.CharField(unique=True, max_length=50)
+    key=models.CharField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)

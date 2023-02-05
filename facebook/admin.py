@@ -1,9 +1,17 @@
 from django.contrib import admin
 
-from facebook.models import Actress
+from facebook.models import Actress,Metadata
 
 # Register your models here.
 @admin.register(Actress)
 class gropsorAdmin(admin.ModelAdmin):
     list_display = ("instaid",'created',"modified")
     ordering = ('-modified',)
+    
+@admin.register(Metadata)
+class metaAdmin(admin.ModelAdmin):
+    list_display = ("name","key",'created',"modified")
+    list_display_links = ('name',)
+    list_editable=["key"]
+    ordering = ('-modified',)
+

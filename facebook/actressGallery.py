@@ -5,10 +5,14 @@ import time
 import os
 import instaloader
 import requests
-from facebook.models import Actress
+from facebook.models import Actress,Metadata
 import pytz
 
-access_token = os.environ.get('FB_ACCESS', "EAASUJOWbWlUBAMOf8HoC2FxEEVGaVNGbwOZCIRklVJcLWc5RyVDKaGlDMNjMnUOs4yohIBeJ3iZCKmgZAEkTKLIAtLxfJdh3zc7pswCVwz5nF4hzW9MQcuEp5QLCrYfI5LT5JA7UTW2oxuBMaZCrmbGNj7a6W2YwsF9VWCLE4cmacZC7Gi5NSZCdt0xVB6E86KRGjgsLHDZBgZDZD")
+try:
+    access_token = Metadata.objects.get(name="actress_gallery)").key
+except:
+    access_token= None
+print(access_token)
 facebookId="103874471887645"
 # get last download images data
 
@@ -64,8 +68,6 @@ def updateInstaId():
             Actress.objects.create(instaid=i)    
         except:pass
     
-
-
 # ====================================== upload images ======================================================
 
 # import firebaseSetup
