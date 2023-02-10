@@ -10,5 +10,6 @@ instaloader==4.9.5
 openpyxl==3.0.10
 pytz==2022.7.1
 requests==2.27.1
+selenium==3.141.0
 soupsieve==2.3.2.post1
 urllib3==1.26.14
