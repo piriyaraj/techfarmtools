@@ -135,7 +135,10 @@ def downloadAndUpload():
 
     L = instaloader.Instaloader(
         download_videos=False, save_metadata=False, post_metadata_txt_pattern='')
-    posts = instaloader.Profile.from_username(L.context, postObj.instaid).get_posts()
+    try:
+        posts = instaloader.Profile.from_username(L.context, postObj.instaid).get_posts()
+    except Exception as e:
+        return e
     timeList = []
     if SINCE.tzinfo is None:
         SINCE = pytz.utc.localize(SINCE)
