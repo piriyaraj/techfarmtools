@@ -9,8 +9,9 @@ from facebook.models import Actress,Metadata
 import pytz
 
 try:
-    access_token = Metadata.objects.get(name="actress_gallery)").key
-except:
+    access_token = Metadata.objects.get(name="actress_gallery").key
+except Exception as e:
+    print(e)
     access_token= None
 print(access_token)
 facebookId="103874471887645"
