@@ -138,7 +138,7 @@ def downloadAndUpload():
     try:
         posts = instaloader.Profile.from_username(L.context, postObj.instaid).get_posts()
     except Exception as e:
-        return e+"   "+postObj.instaid
+        return str(e)+"   "+postObj.instaid
     timeList = []
     if SINCE.tzinfo is None:
         SINCE = pytz.utc.localize(SINCE)
