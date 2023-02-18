@@ -418,7 +418,7 @@ def clear():
     for i in clearList:
         tempImages=os.listdir(os.path.abspath(i))
         for j in tempImages:
-            os.remove(os.path.abspath(i+"\\"+j))
+            os.remove(os.path.abspath(i+"/"+j))
 def uploadPost(title,description,imgId=0):
     url = "https://nammacinema.walinking.link/wp-json/nammacinema/v1/createpost"
     data = {
