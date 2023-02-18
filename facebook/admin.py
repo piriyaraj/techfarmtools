@@ -10,8 +10,8 @@ class gropsorAdmin(admin.ModelAdmin):
     
 @admin.register(Metadata)
 class metaAdmin(admin.ModelAdmin):
-    list_display = ("name","key",'created',"modified")
+    list_display = ("name","key","pageId",'created',"modified")
     list_display_links = ('name',)
-    list_editable=["key"]
+    list_editable=["key","pageId"]
     ordering = ('-modified',)
 
