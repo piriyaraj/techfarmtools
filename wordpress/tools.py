@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
@@ -446,6 +447,7 @@ def run():
         return "Video post "+title
     # print(title)
     downloadImages(imgUrls)
+    time.sleep(60)
     addLogo()
     
     imgUrls,imgIds=uploadImage()
