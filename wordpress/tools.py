@@ -442,9 +442,9 @@ def run():
     title,text,imgUrls,description=extractPost(postUrl)
     if(title==0):
         res=setposted(postUrl)
-        print("Video post:",title)
+        # print("Video post:",title)
         return "Video post "+title
-    print(title)
+    # print(title)
     downloadImages(imgUrls)
     addLogo()
     
@@ -463,7 +463,7 @@ def run():
         result=uploadLinkOnFacebook(res["postlink"],title)
     except Exception as e:
         return str(e)
-    print("Facebook post: ",result)
+    # print("Facebook post: ",result)
     return "post uploaded"
     # print(res["postLink"])
 
@@ -485,7 +485,7 @@ def formatContent(cont,imgUrls):
 def test():
     run()
     # res=uploadLinkOnFacebook("https://nammacinema.walinking.link/%e0%ae%aa%e0%ae%bf%e0%ae%b0%e0%ae%aa%e0%ae%b2-%e0%ae%a8%e0%ae%9f%e0%ae%bf%e0%ae%95%e0%ae%b0%e0%af%8d-%e0%ae%9a%e0%ae%bf%e0%ae%a4%e0%af%8d%e0%ae%a4%e0%ae%be%e0%ae%b0%e0%af%8d%e0%ae%a4%e0%af%8d%e0%ae%a4/","பிரபல நடிகர் சித்தார்த்தின் லேட்டஸ்ட் புகைப்படங்கள்")
-    print(res)
+    # print(res)
     # run()
     return
     postUrl=Nammacinema_post.objects.filter(extract=False).order_by("-created")[0].link
