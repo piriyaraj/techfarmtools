@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cineulagam/', include("cineulagam.urls")),
     path('facebook/', include("facebook.urls")),
+    path('wordpress/', include("wordpress.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

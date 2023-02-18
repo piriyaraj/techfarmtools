@@ -13,7 +13,6 @@ try:
 except Exception as e:
     print(e)
     access_token= None
-print(access_token)
 facebookId="103874471887645"
 # get last download images data
 
