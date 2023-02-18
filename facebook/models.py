@@ -22,3 +22,4 @@ class Metadata(models.Model):
     key=models.CharField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    pageId=models.CharField(max_length=500,default="")
