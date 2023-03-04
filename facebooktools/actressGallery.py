@@ -5,7 +5,7 @@ import time
 import os
 import instaloader
 import requests
-from facebook.models import Actress,Metadata
+from facebooktools.models import Actress,Metadata
 import pytz
 
 try:

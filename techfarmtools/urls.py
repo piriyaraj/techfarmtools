@@ -21,7 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cineulagam/', include("cineulagam.urls")),
-    path('facebook/', include("facebook.urls")),
+    path('facebook/', include("facebooktools.urls")),
     path('wordpress/', include("wordpress.urls")),
 ]
 

@@ -7,7 +7,7 @@ from PIL import ImageFont
 from PIL import ImageDraw
 import textwrap
 import re
-from facebook.linksPost import postAlink
+from facebooktools.tools import postAlink, shareOnGroup
 from wordpress.models import Nammacinema_post
 from django.db import IntegrityError
 
@@ -476,8 +476,10 @@ def run():
 
 def uploadLinkOnFacebook(url,message):
     tokenName="actress_gallery"
-    return postAlink(tokenName,url,message)
-    
+    result1 = postAlink(tokenName,url,message)
+    print("page post: ",result1)
+    result=shareOnGroup(*result1.split("_"))
+    return result1
 def formatContent(cont,imgUrls):
     imgTag=cont.find_all("img")
     for i in imgTag:
