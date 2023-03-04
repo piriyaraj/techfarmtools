@@ -23,6 +23,7 @@ urlpatterns = [
     path('cineulagam/', include("cineulagam.urls")),
     path('facebook/', include("facebooktools.urls")),
     path('wordpress/', include("wordpress.urls")),
+    path('tiktok/', include("tiktoktools.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

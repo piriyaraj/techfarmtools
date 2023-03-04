@@ -50,6 +50,26 @@ def shareOnGroup(pageId, postId):
             pass
         except:
             pass
+    
+def uploadVideo(pageId,videoPath,message=""):
+    try:
+        data=Metadata.objects.get(pageId=pageId)
+        access_token = data.key
+        pageId=data.pageId
+    except Exception as e:
+        print(e)
+        access_token= None
+        return "check the access token in admin pannel"
+    url = f"https://graph-video.facebook.com/{pageId}/videos?access_token=" + access_token
+    files = {
+        'file': open(videoPath, 'rb'),
+    }
+    payload = {
+        "title": message,
+        "description": message,
+    }
+    st = requests.post(url, files=files, data=payload)
+    return st.json()['id']
         
 def test():
     result=postAlink("actress_gallery","https://nammacinema.walinking.link/%E0%AE%88%E0%AE%B0%E0%AE%AE%E0%AE%BE%E0%AE%A9-%E0%AE%B0%E0%AF%8B%E0%AE%9C%E0%AE%BE%E0%AE%B5%E0%AF%87-2-%E0%AE%9A%E0%AF%80%E0%AE%B0%E0%AE%BF%E0%AE%AF%E0%AE%B2%E0%AF%8D-%E0%AE%A8%E0%AE%9F%E0%AE%BF/","")
