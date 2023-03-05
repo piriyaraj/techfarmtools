@@ -2,7 +2,7 @@ import os
 import time
 from django.http import HttpResponse
 from django.shortcuts import render
-from facebooktools.tools import uploadVideo
+from facebooktools.tools import shareOnGroup, uploadVideo
 
 from tiktoktools.models import Tiktofb
 from tiktoktools.tools import downloadVideo, getAllNewVideoLinks
@@ -32,6 +32,7 @@ def uploadVideoFromTiktok(request):
 
                 # Upload the last video to Facebook
                 postId=uploadVideo(tiktofb.fb_page_id, videoPath, message="")
+                shareOnGroup(tiktofb.fb_page_id,postId)
                 print("postId: ",postId)
                 # Update the Tiktofb record with the last video ID
                 tiktofb.tiktok_last_video_id = VideoIds[-1]
@@ -43,11 +44,13 @@ def uploadVideoFromTiktok(request):
                 continue
             time.sleep(60)
             postId=uploadVideo(tiktofb.fb_page_id, videoPath, message="")
+            shareOnGroup(tiktofb.fb_page_id,postId)
+            
             print("postId: ",postId)
             tiktofb.tiktok_last_video_id = VideoIds[i]
             tiktofb.save()
             os.remove(videoPath)
-        return HttpResponse(f'Video uploaded from {tiktofb.fb_page_id} to {tiktofb.fb_page_name}')
+        return HttpResponse(f'Video uploaded from {tiktofb.tiktok_id} to {tiktofb.fb_page_name}')
     return HttpResponse("No new videos found")
     
     
