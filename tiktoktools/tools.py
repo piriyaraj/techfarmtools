@@ -29,7 +29,7 @@ def getAllNewVideoLinks(tiktokId,lastVideoId):
             pass
     # print(request_data)
     # username = request_data["data"]["videos"][0]['author']["unique_id"]
-    print(request_data)
+    # print(request_data)
     videos = request_data["data"]["videos"]
     # print(videos)
     # print(f"""\n{Fore.CYAN}[Programs] {Fore.GREEN}[Status] {Fore.RED}@{username} {Fore.YELLOW}Have Published {Fore.BLUE}{len(videos)} {Fore.YELLOW}Videos. Downloading them...""")
