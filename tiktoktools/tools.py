@@ -8,11 +8,12 @@ def getAllNewVideoLinks(tiktokId,lastVideoId):
     videoIds=[]
     url = "https://www.tikwm.com/api/user/posts"
     KeyError = False
+    request_data=""
     while not KeyError:
         try:
             url = "https://www.tikwm.com/api/user/posts"
 
-            querystring = {"unique_id":"", "count":"35","cursor":"0"}
+            querystring = {"unique_id":"", "count":"100","cursor":"0","hd":1}
             querystring["unique_id"] = tiktokId
 
             s = requests.Session()
@@ -21,18 +22,18 @@ def getAllNewVideoLinks(tiktokId,lastVideoId):
             header = {
                 "User-Agent": gen
             }
-
+            time.sleep(10)
             request_data = requests.request("GET", url, headers=header, params=querystring).json()
-            break         
+            break
         except:
             pass
     # print(request_data)
     # username = request_data["data"]["videos"][0]['author']["unique_id"]
-
+    print(request_data)
     videos = request_data["data"]["videos"]
     # print(videos)
     # print(f"""\n{Fore.CYAN}[Programs] {Fore.GREEN}[Status] {Fore.RED}@{username} {Fore.YELLOW}Have Published {Fore.BLUE}{len(videos)} {Fore.YELLOW}Videos. Downloading them...""")
-
+    print(len(videos))
     count = 0
     for video in videos:
         count += 1
@@ -62,8 +63,8 @@ def downloadVideo(download_url,uri):
         return os.path.abspath(f"./tiktok/{username}/{uri}.mp4")
         
     else:
-        time.sleep(0.7) 
-        return None
+        time.sleep(0.7)
+        return os.path.abspath(f"./tiktok/{username}/{uri}.mp4")
 
 if __name__=="__main__":
     downloadLink,videoIds=getAllNewVideoLinks("@animals_funny1988","7205503547755072814")
