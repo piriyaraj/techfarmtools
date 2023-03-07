@@ -11,7 +11,7 @@ from tiktoktools.tools import downloadVideo, getAllNewVideoLinks
 def index(request):
     return HttpResponse("tiktok tools index page")
 
-
+# upload video from tiktik to facebook
 def uploadVideoFromTiktok(request):
     # Get all the Tiktofb records
     tiktofbs = Tiktofb.objects.all().order_by('-modified')

@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'cineulagam',
     'facebooktools',
     'wordpress',
-    "tiktoktools"
+    "tiktoktools",
+    "youtubetools",
+    "executor"
 ]
 
 MIDDLEWARE = [
