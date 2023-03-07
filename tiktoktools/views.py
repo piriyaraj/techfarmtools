@@ -5,7 +5,7 @@ from facebooktools.tools import uploadVideo
 
 from tiktoktools.models import Tiktofb
 from tiktoktools.tools import downloadVideo, getAllNewVideoLinks
-
+import time
 # Create your views here.
 def index(request):
     return HttpResponse("tiktok tools index page")
@@ -20,11 +20,14 @@ def uploadVideoFromTiktok(request):
         downloadLinks,VideoIds=getAllNewVideoLinks(tiktofb.tiktok_id, tiktofb.tiktok_last_video_id)
         downloadLinks.reverse()
         VideoIds.reverse()
+
         for i in range(len(downloadLinks)):
             if tiktofb.tiktok_last_video_id=="None":
                 videoPath=downloadVideo(downloadLinks[-1],VideoIds[-1])
+                
                 if(videoPath==None):
                     continue
+                time.sleep(60)
                 # Upload the last video to Facebook
                 postId=uploadVideo(tiktofb.fb_page_id, videoPath, message="")
                 # Update the Tiktofb record with the last video ID
@@ -35,6 +38,7 @@ def uploadVideoFromTiktok(request):
             videoPath=downloadVideo(downloadLinks[i],VideoIds[i])
             if(videoPath==None):
                 continue
+            time.sleep(60)
             postId=uploadVideo(tiktofb.fb_page_id, videoPath, message="")
             tiktofb.tiktok_last_video_id = VideoIds[i]
             tiktofb.save()
