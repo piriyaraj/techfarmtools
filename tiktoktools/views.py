@@ -6,7 +6,7 @@ from facebooktools.tools import shareOnGroup, uploadVideo
 
 from tiktoktools.models import Tiktofb
 from tiktoktools.tools import downloadVideo, getAllNewVideoLinks
-
+import time
 # Create your views here.
 def index(request):
     return HttpResponse("tiktok tools index page")
@@ -21,15 +21,23 @@ def uploadVideoFromTiktok(request):
         downloadLinks,VideoIds=getAllNewVideoLinks(tiktofb.tiktok_id, tiktofb.tiktok_last_video_id)
         downloadLinks.reverse()
         VideoIds.reverse()
+<<<<<<< HEAD
+
+=======
         print(len(VideoIds))
             
+>>>>>>> 27c67064fc7009250f319e41ecd455cbe744d585
         for i in range(len(downloadLinks)):
             if tiktofb.tiktok_last_video_id=="None":
                 videoPath=downloadVideo(downloadLinks[-1],VideoIds[-1])
+                
                 if(videoPath==None):
                     continue
                 time.sleep(60)
+<<<<<<< HEAD
+=======
 
+>>>>>>> 27c67064fc7009250f319e41ecd455cbe744d585
                 # Upload the last video to Facebook
                 postId=uploadVideo(tiktofb.fb_page_id, videoPath, message="")
                 shareOnGroup(tiktofb.fb_page_id,postId)
